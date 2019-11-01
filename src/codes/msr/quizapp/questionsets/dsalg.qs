@@ -122,3 +122,63 @@ To easily remove a node that is not the head of a SLL conveniently, you need to 
 -the node that comes after the node to be removed
 -the node itself
 -impossible to determine
+A binary tree is a collection of items in which each item has:
+-at most two successors
+-at most three successors
+-one successor
+-exactly two successors
+-no successors
+A binary tree is a binary search tree if:
+-Every left child has a key less than the parent and every right child has a key greater than or equal to the parent.
+-In the path from the root node to every leaf node, the key of each node is greater than or equal to the key of its parent.
+-Every non-leaf node has children whose keys are greater than or equal to the parent
+-Every non-left node has two child nodes
+-Every non-leaf node has children whose keys are less than or equal to the parent
+Given a binary tree of 14 nodes. What is the minimum height of this tree?%n(Note: The height of a tree consisting of one node is one.)
+-4
+-1
+-2
+-3
+-5
+What is the least number of leaf nodes in a binary tree of height 4?
+-1
+-4
+-8
+-5
+-Some other value
+Insert the following letters (in the order given) into an empty binary search tree:%nJ R D G T E M H P A F Q%nIf the root node was deleted from the binary search tree which one of the following nodes would be used to replace the root node?
+-M
+-R
+-D
+-T
+-One of the other letters
+Insert the following letters (in the order given) into an empty binary search tree:%nJ R D G T E M H P A F Q%nIn what order are the nodes of the binary search tree visited during a PostOrder traversal?
+-A F E H G D Q P M T R J
+-J D A G E F H R M P Q T
+-J D R A G M T E H P F Q
+-A D E F G H J M P Q R T
+-None of the above
+Which formula gives the maximum number of nodes in the nth level of a binary tree?%n(Note: the root is at level 0)
+-2ⁿ
+-n²
+-n²-1
+-2ⁿ⁺¹
+-None of the above
+Which formula gives the maximum number of nodes in a binary tree of height h?%n(Note: the height of a tree consisting of one node is one).
+-2ʰ-1
+-2ʰ⁺¹
+-None of these suggestions
+-2ʰ⁻¹
+-2ʰ+1
+Which traversal of a binary tree does the following algorithm produce?%n%nTraverse (Root)  %nif Root not equal to null then%n    Output Root.Data%n    Traverse (Root.Left)%n   Traverse(Root.Right)%n  end if%nend
+-PreOrder Traversal (VLR)
+-PostOrder Traversal (LRV)
+-Reverse PostOrder Traversal (RLV)
+-Reverse PreOrder Traversal (VRL)
+-InOrder Traversal (LVR)
+Which function does the following algorithm called Secret perform?%n%nSecret (Root)%n  if Root == null then%n    return 0;%n  else%n    return 1 + Secret (Root.Left) + Secret (Root.Right);%n  end if;%nend;
+-Counts the number of nodes in a binary tree
+-Determines the height of a binary tree
+-Counts the number of children in a binary tree
+-Counts the number of leaves in a binary tree
+-Counts the number of branches in a binary tree
