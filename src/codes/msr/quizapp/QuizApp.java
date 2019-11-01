@@ -2,6 +2,8 @@ package codes.msr.quizapp;
 
 import codes.msr.quizapp.datastructures.Question;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ public class QuizApp {
     private static ArrayList<Question> questions = new ArrayList<>();
 
     public static void main(String[] args) {
-        generateDsalgQuestions();
+        loadFromFile(new File("/Users/Mikael/Dev/quiz-app/src/codes/msr/quizapp/questionsets/dsalg.qs"));
 
         int questionNumber = 1;
         int correct = 0;
@@ -32,11 +34,28 @@ public class QuizApp {
         }
     }
 
-    private static void generateDsalgQuestions() {
-        questions.add(new Question("Which one of the following definitions describes a hierarchical data structure?", new String[]{"A data structure where each node will have no predecessors and no successors", "A data structure where each node has many predecessors and many successors", "A data structure where each node has a unique predecessor and many successors", "A data structure where each node has a unique predecessor and a unique successor", "A data structure where each node has many predecessors and a unique successor"}, 2));
-        questions.add(new Question("An Abstract Data Type (ADT) is dependent on the implementation while a data structure is independent on the implementation.", new String[]{"True", "False"}, 1));
-        questions.add(new Question("Which one of the following definitions describes a linear data structure?", new String[]{"A data structure where each node will have no predecessors and no successors", "A data structure where each node has a unique predecessor and a unique successor", "A data structure where each node has a unique predecessor and many successors", "A data structure where each node has many predecessors and a unique successor", "A data structure where each node has many predecessors and many successors", "None of the above"}, 1));
-        questions.add(new Question("Which one of the following definitions describes a graph data structure?", new String[]{"A data structure where each node has a unique predecessor and many successors", "A data structure where each node will have no predecessors and no successors", "A data structure where each node has many predecessors and many successors", "A data structure where each node has many predecessors and a unique successor", "A data structure where each node has a unique predecessor and a unique successor"}, 2));
+    public static void loadFromFile(File file) {
+        try {
+            Scanner scanner = new Scanner(file);
+            String questionText = null;
+            ArrayList<String> answers = new ArrayList<>();
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                if (questionText == null) {
+                    line = line.replaceAll("%n", "\n");
+                    questionText = line;
+                } else if (line.substring(0, 1).equals("-")) {
+                    answers.add(line.substring(1));
+                } else {
+                    questions.add(new Question(questionText, answers.toArray(new String[0]), 0));
+                    line = line.replaceAll("%n", "\n");
+                    questionText = line;
+                    answers = new ArrayList<>();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }
