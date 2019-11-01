@@ -24,9 +24,8 @@ public class QuizApp {
 
             if (question.offerQuestion()) {
                 correct++;
+                questions.remove(question);
             }
-
-            questions.remove(question);
 
             System.out.println("Current score: " + correct + "/" + questionNumber);
 
