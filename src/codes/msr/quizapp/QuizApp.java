@@ -4,6 +4,7 @@ import codes.msr.quizapp.datastructures.Question;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -13,7 +14,8 @@ public class QuizApp {
     private static ArrayList<Question> questions = new ArrayList<>();
 
     public static void main(String[] args) {
-        loadFromFile(new File("/Users/Mikael/Dev/quiz-app/src/codes/msr/quizapp/questionsets/dsalg.qs"));
+        URL url = QuizApp.class.getResource("./questionsets/dsalg.qs");
+        loadFromFile(new File(url.getPath()));
 
         int questionNumber = 1;
         int correct = 0;
